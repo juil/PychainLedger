@@ -16,4 +16,4 @@ The application can validate the ledger by comparing each block's hash to the ne
 
 ## Code
 
-* Using starter code for `pychain.py`
+* Using starter code for `pychain.py` provided by *edX Boot Camps*
