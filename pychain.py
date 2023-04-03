@@ -121,6 +121,10 @@ class PyChain:
         self.chain += [block]
 
     def is_valid(self):
+        """
+        is_valid: 
+        Checks each blocks hash with the next block's `prev_hash`. Returns True if all blocks' hashes match.
+        """
         block_hash = self.chain[0].hash_block()
 
         for block in self.chain[1:]:
@@ -137,8 +141,6 @@ class PyChain:
 # Streamlit Code
 
 # Adds the cache decorator for Streamlit
-
-
 @st.cache(allow_output_mutation=True)
 def setup():
     print("Initializing Chain")
@@ -207,6 +209,7 @@ selected_block = st.sidebar.selectbox(
 
 st.sidebar.write(selected_block)
 
+# Button checks if blockchain in valid.
 if st.button("Validate Chain"):
     st.write(pychain.is_valid())
 
