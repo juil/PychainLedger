@@ -141,15 +141,15 @@ class PyChain:
 # Streamlit Code
 
 # Default Pychain
-genesis_block = PyChain([Block("Genesis",0)])
+genesis_block = Block("Genesis",0)
 
 # Adds the cache decorator for Streamlit
 # @st.cache(allow_output_mutation=True)
-#TODO: Fix cache_data
-@st.cache_data
+# Use cache_resource instead of cache_data
+@st.cache_resource
 def setup():
     print("Initializing Chain")
-    return genesis_block
+    return PyChain([genesis_block])
 
 
 st.markdown("# PyChain")
@@ -216,7 +216,7 @@ st.sidebar.write(selected_block)
 
 # Button to clear blockchain.
 if st.button("Reset Blockchain"):
-    st.cache_data.clear()
+    st.cache_resource.clear()
 
 # Button checks if blockchain in valid.
 if st.button("Validate Chain"):
